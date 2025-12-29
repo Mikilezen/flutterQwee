@@ -15,7 +15,18 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Feedback")),
+      // backgroundColor: const Color.fromARGB(255, 246, 234, 215),
+      appBar: AppBar(
+        title: const Text(
+          "Feedback",
+          style: TextStyle(
+            // color: Color.fromARGB(255, 0, 0, 0),
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        // backgroundColor: Colors.amberAccent,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -24,7 +35,12 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
             children: [
               TextFormField(
                 controller: nameCtrl,
-                decoration: const InputDecoration(labelText: "Your Name"),
+                decoration: const InputDecoration(
+                  labelText: "Full Name",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(9)),
+                  ),
+                ),
                 validator: (value) =>
                     value!.isEmpty ? "Name is required" : null,
               ),
@@ -33,13 +49,21 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
               TextFormField(
                 controller: msgCtrl,
                 maxLines: 4,
-                decoration: const InputDecoration(labelText: "Your Feedback"),
+                decoration: const InputDecoration(
+                  labelText: "Your Feedback",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(9)),
+                  ),
+                ),
                 validator: (value) =>
                     value!.isEmpty ? "Feedback is required" : null,
               ),
               const SizedBox(height: 24),
 
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.amberAccent,
+                ),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     ScaffoldMessenger.of(context).showSnackBar(

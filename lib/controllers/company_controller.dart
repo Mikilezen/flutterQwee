@@ -1,7 +1,8 @@
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:convert';
 import 'package:qwee/services/api_servie.dart';
 import '../models/company_model.dart';
-import '../services/api_servie.dart';
 
 class CompanyController extends GetxController {
   final Company_service service = Company_service();
@@ -21,10 +22,29 @@ class CompanyController extends GetxController {
       isLoading.value = true;
       final result = await service.fetchCompanies();
       companies.value = result;
+      // saveCompaniesToPrefs(result);
     } catch (e) {
       errorMessage.value = 'Failed to load companies';
     } finally {
       isLoading.value = false;
     }
   }
+
+  // Future<void> saveCompaniesToPrefs(List<Company> companyList) async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final String jsonString = jsonEncode(
+  //     companyList.map((e) => e.toJson()).toList(),
+  //   );
+  //   await prefs.setString('companies', jsonString);
+  // }
+
+  // Future<void> loadCompaniesFromPrefs() async {
+  //   final prefs = await SharedPreferences.getInstance();
+  //   final String? jsonString = prefs.getString('companies');
+
+  //   if (jsonString != null) {
+  //     final List<dynamic> jsonList = jsonDecode(jsonString);
+  //     companies.value = jsonList.map((e) => Company.fromJson(e)).toList();
+  //   }
+  // }
 }

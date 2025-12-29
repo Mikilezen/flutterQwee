@@ -1,28 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:qwee/views/feedback_screen.dart';
 import '../models/company_model.dart';
+import 'package:get/get.dart';
 
 class CompanyDetailScreen extends StatelessWidget {
   final Company company;
-
   const CompanyDetailScreen({super.key, required this.company});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(company.name)),
+      appBar: AppBar(
+        title: Text(
+          company.name,
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Image.network(
-                company.logo,
-                height: 100,
-                errorBuilder: (_, __, ___) =>
-                    const Icon(Icons.business, size: 80),
-              ),
-            ),
+            Center(child: const Icon(Icons.business, size: 80)),
             const SizedBox(height: 16),
 
             Text(
@@ -39,14 +37,17 @@ class CompanyDetailScreen extends StatelessWidget {
             Text("Address: ${company.address}"),
             Text("ZIP: ${company.zip}"),
             Text("Domain: ${company.domain}"),
-
-            const Spacer(),
-
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/feedback');
-              },
-              child: const Text("Send Feedback"),
+            SizedBox(height: 45),
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.amberAccent,
+                ),
+                onPressed: () {
+                  Get.to(FeedbackScreen());
+                },
+                child: const Text("Send Feedback"),
+              ),
             ),
           ],
         ),
