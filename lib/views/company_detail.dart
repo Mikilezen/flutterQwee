@@ -46,7 +46,10 @@ class CompanyDetailScreen extends StatelessWidget {
                 onPressed: () {
                   Get.to(FeedbackScreen());
                 },
-                child: const Text("Send Feedback"),
+                child: const Text(
+                  "Send Feedback",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             ),
           ],

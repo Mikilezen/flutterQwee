@@ -11,9 +11,6 @@ import 'views/feedback_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init();
-
-  // Get.put(CompanyController());
-  // Get.put(BookmarkController());
   final box = GetStorage();
   await GetStorage.init();
   box.writeIfNull('onetime', false);
@@ -30,8 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Company Finder',
       theme: ThemeData.dark().copyWith(),
-      // home: box.read('onetime') ? CompanyList() : Company_card_name(),
-      home: Company_card_name(),
+      home: box.read('onetime') ? CompanyList() : Company_card_name(),
     );
   }
 }

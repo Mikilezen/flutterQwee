@@ -75,7 +75,10 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                     msgCtrl.clear();
                   }
                 },
-                child: const Text("Submit"),
+                child: const Text(
+                  "Submit",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
             ],
           ),

@@ -54,8 +54,6 @@ class CompanyList extends StatelessWidget {
           itemCount: controller.companies.length,
           itemBuilder: (context, index) {
             final company = controller.companies[index];
-
-            print(randomThing.imageByIndex(index));
             return ListTile(
               leading: CircleAvatar(
                 backgroundColor: randomThing.colorByIndex(index),
